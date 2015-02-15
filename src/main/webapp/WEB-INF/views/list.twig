@@ -1,0 +1,14 @@
+{% extends'layout/main.twig' %}
+
+{% block content %}
+<h1>Słowa</h1>
+    {% if words %}
+    <ul>
+        {% for word in words %}
+        <li>{{ word.sourceText | upper}}</li>
+        {% endfor %}
+    </ul>
+    {% else %}
+        <p>Brak słów...</p>
+    {% endif %}
+{% endblock %}

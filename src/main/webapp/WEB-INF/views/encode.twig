@@ -1,0 +1,16 @@
+{% extends "layout/main.twig" %}
+
+{% block title %}
+    Encode form
+{% endblock %}
+
+{% block content %}
+    <h1>Encode text form</h1>
+    {% if error %}
+        <p style="background-color: red">{{ error }}</p>
+    {% endif %}
+    <form name="encode" method="post" action="/encodeForm">
+        <input type="text" name="sourceText" value="{{ sourceText  }}" />
+        <input type="submit" value="Wyślij"/>
+    </form>
+{% endblock %}

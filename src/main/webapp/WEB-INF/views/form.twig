@@ -1,0 +1,25 @@
+{% extends "layout/main.twig" %}
+
+{% block title %}
+    Encode form angular!
+{% endblock %}
+
+{% block footer %}
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.9/angular.min.js"></script>
+    <script type="text/javascript" src="{{ asset 'js/app.js' }}"></script>
+{% endblock %}
+
+{% block content %}
+    <div ng-app="encoderApp" ng-controller="EncodeController">
+        <h1>Encode text js form!</h1>
+        <form name="form" novalidate>
+            <input type="text" required pattern="[a-z]*" ng-pattern="/^[a-z]*$/" name="sourceText" ng-model="sourceText"/>
+            <input type="submit" ng-click="encode(sourceText)" ng-disabled="form.$invalid" value="Wyślij"/>
+            <div ng-show="form.sourceText.$dirty">
+                <span ng-show="form.sourceText.$error.required">Enter text.</span>
+                <span ng-show="form.sourceText.$error.pattern">This is not a valid pattern.</span>
+            </div>
+        </form>
+        <div>And the uppercased and doubled result is... [[ encodedText | uppercase | doubleMe ]] </div>
+    </div>
+{% endblock %}
